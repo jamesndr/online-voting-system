@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Onlinevotingsystem.Models.Election>
+
+<p class="page-title">
+    <a >View Election </a>
+</p>
+<table class="table blur" id="tb">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ElectionName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ElectionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                <button class="glow-on-hover">
+                        <a asp-action="VuCandidate" asp-route-id="@item.Electionid">see candidates</a> |
+                </button>
+                    <button class="glow-on-hover"><a asp-action="VuScore" asp-route-id="@item.Electionid">see Result</a> |</button>
+                    
+
+            
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<script type="text/javascript">
+    function ViewCan() {
+
+        $.post("/Elections/VuCandidate", null, function (data) {
+
+            alert("This is your election list");
+            var userurl = "/Election/VuCandidate";
+            window.location.href = userurl;
+        });
+    }
+</script>

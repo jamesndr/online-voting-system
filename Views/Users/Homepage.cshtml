@@ -1,0 +1,34 @@
+﻿<div class="row blur">
+
+    <p class="addc" id="addc" style=" text-shadow:1px 1px 0 #444;color:ghostwhite; background-color:lawngreen;border-radius:8px;">@TempData["logs"]</p><br />
+            <hr />
+    <p>
+    <h1 class="page-title">Welcome Back!</h1>
+    <button class ="glow-on-hover" style="padding-right:8px" onclick="ViewElectionsusr()">
+        View Elections</button>
+    <button class="glow-on-hover" onclick="ViewResult()">View Results</button>
+</p>
+</div>
+
+<script src="~/js/login.js"></script>
+<script type="text/javascript">
+    function ViewElectionsusr() {
+        $.post("/Elections/UserElection", null, function (data) {
+
+            alert("This is your election list")
+        });
+        var userurl = "/Election/UserElection";
+        window.location.href = userurl;
+    }
+    function ViewResult(){
+           $.post("/ElectionVotes/VuScore", null, function (data) {
+
+            alert("This is your election list")
+        });
+        var userurl = "/Election/UserElection";
+        window.location.href = userurl;
+    }
+</script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

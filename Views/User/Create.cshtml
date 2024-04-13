@@ -1,0 +1,68 @@
+﻿@model Onlinevotingsystem.Models.Users
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="page-title">Create Users</h1>
+
+
+<hr />
+<div class="row blur">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <p class="addc" id="addc" style=" text-shadow:1px 1px 0 #444;color:black; background-color:red;border-radius: 8px;">@TempData["regf"]</p>
+            <p class="addc" id="addc" style=" text-shadow:1px 1px 0 #444;color:ghostwhite; background-color:lawngreen;border-radius: 8px;">@TempData["regs"]</p>
+            <div class="form-group">
+                <input asp-for="FirstName"placeholder="First Name" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="LastName" placeholder="Last Name"  class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                @*<input asp-for="DateOfBirth" class="form-control" />*@
+                <input asp-for="DateOfBirth" type="date"  max="2005-12-31" class="form-control">
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+              @*  <input asp-for="Gender" class="form-control" />*@
+                <select asp-for="Gender" asp-items="@(new SelectList(@ViewBag.Gender,"GenderValue","GenderName"))" class="heading form-control" id="Election"></select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="email" placeholder="Email"class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+       
+            <div class="form-group">
+                <input asp-for="PhoneNo" placeholder="Mobile number" class="form-control" />
+                <span asp-validation-for="PhoneNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="address" placeholder="address" class="form-control" />
+                <span asp-validation-for="address" class="text-danger"></span>
+            </div>
+           @* <div class="form-group">
+                <label asp-for="CanVote" class="control-label"></label>
+                <input asp-for="CanVote" class="form-control" />
+                <span asp-validation-for="CanVote" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <button type="submit" value="Create" class="glow-on-hover" >Register</button><br />
+                If Existing User ? <button value="Login" class="glow-on-hover heading" id="btn-id" onclick="RedirectToLogin()" >Login</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@*<div>
+    <a asp-action="Index">Back to List</a>
+</div>*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

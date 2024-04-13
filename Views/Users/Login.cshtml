@@ -1,0 +1,37 @@
+﻿@model Onlinevotingsystem.Models.UserLogin
+@{
+    ViewData["Title"] = "Login";
+   // Layout = null;
+}
+<h4 class="page-title">Login</h4>
+<hr />
+<div class="row blur" >
+    <div class="col-md-4">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+             <p class="addc heading" id="addc" style=" text-shadow:1px 1px 0 #444;color:black; background-color:red;border-radius:8px;">@TempData["nop"]</p>
+               <p class="addc heading" id="addc" style=" text-shadow:1px 1px 0 #444;color:black; background-color:red;border-radius:8px;">@TempData["logf"]</p>
+            <p class="addc" id="addc" style=" text-shadow:1px 1px 0 #444;color:ghostwhite; background-color:lawngreen;border-radius:8px;">@ViewData["fps"]</p>
+            <div class="form-group">
+                <input asp-for="email" placeholder="Email" class="form-control" id="email" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="password" placeholder="Password" class="form-control" id="password"/>
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+            
+            
+        </form>
+    </div>
+</div>
+<div class="form-group btn-group-sm" style="text-align:center;margin-top:18px">
+    <button title="If New USer ? " style="color:white" class="glow-on-hover heading" value="Register" onclick="addUser()">Register</button>--
+    <button value="Login" style="color:white" class="glow-on-hover heading" id="btn-id" onclick="Validate()">Login</button>--
+    <button title="If Forgot Password  ? " style="color:white" class="glow-on-hover heading" value="Forgot Password" onclick="UpdatePassWord()">Forgot-Password</button>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

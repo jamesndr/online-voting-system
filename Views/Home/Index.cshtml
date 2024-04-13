@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Admin";
+    
+}
+
+
+<div class="text-center ">
+
+    <p class="addc" id="addc" style=" text-shadow:1px 1px 0 #444;color:ghostwhite; background-color:lawngreen;border-radius:8px;">@TempData["logs"]</p>
+    <button onclick="addcandidate()" class="glow-on-hover" id="container">add candidate</button>
+    <button onclick="addelection()" class="glow-on-hover" id="container">add election</button>
+    <button onclick="addUser()" class="glow-on-hover" id="container">add User</button>
+    <button onclick="ViewUser()" class="glow-on-hover" id="container">view User</button><br /><hr />
+    <button onclick="ViewElections()" class="glow-on-hover" id="container">view election</button>
+
+    
+</div>
+<div class="page-title">
+<h1 >Welcome</h1>
+<p >
+    Welcome to Admin Dashboard
+</p>
+</div>
+<script src="~/js/login.js"></script>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
